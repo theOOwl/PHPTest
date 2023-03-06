@@ -5,7 +5,7 @@ include "./models/db_user.php";
 function db_login($user)
 {
     $con = make_connection();
-    $sql = "SELECT * FROM users WHERE u_user_name='$user->Username' AND u_password='$user->HashedPassword'";
+    $sql = "SELECT * FROM users WHERE u_user_name='$user->Username' AND u_password='$user->Password'";
     $result = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($result) === 1) {

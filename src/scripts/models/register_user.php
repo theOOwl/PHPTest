@@ -30,4 +30,16 @@ class RegisterUser
     {
         return ctype_alnum($this->Username);
     }
+    public function valid_name()
+    {
+        return !empty($this->FirstName) && !empty($this->LastName);
+    }
+    public function required_username()
+    {
+        return !empty($this->Username);
+    }
+    public function valid_password()
+    {
+        return !empty($this->Password);
+    }
 }

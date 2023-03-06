@@ -6,17 +6,21 @@ $register_page = "/demo/src/pages/register.php";
 $welcome_page = "/demo/src/pages/welcome.php";
 
 
-if(!isset($_POST['first_name']) || !isset($_POST['last_name'])) {
+$user = new RegisterUser ($_POST['username'], $_POST['password'],$_POST['confirm_password'], $_POST['first_name'], $_POST['last_name']);
+
+
+if (!$user-> valid_name()) {
     header ("Location: $register_page?error=First Name and Last Name are required");
     exit();
 }
-if(!isset($_POST['username'])) {
+if (!$user-> required_username()) {
     header ("Location: $register_page?error=User Name is required");
     exit();
 }
-
-$user = new RegisterUser ($_POST['username'], $_POST['password'],$_POST['confirm_password'], $_POST['first_name'], $_POST['last_name']);
-
+if (!$user-> valid_password()) {
+    header ("Location: $register_page?error=Password is required");
+    exit();
+}
 if (!$user-> confirm_password()) {
     header ("Location: $register_page?error=Passwords are not the same");
     exit();

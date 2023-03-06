@@ -3,13 +3,13 @@ class LoginUser
 {
     public $Username;
     public $HashedPassword;
-    private $Password;
+    public $Password;
 
     public function __construct($username, $password)
     {
         $this->Username = $this->correction($username);
         $this->Password = $this->correction($password);
-        $this->HashedPassword =  password_hash($this->Password, PASSWORD_DEFAULT);
+        $this->HashedPassword = password_hash($this->Password, PASSWORD_DEFAULT);
     }
     private function correction($data)
     {
@@ -22,4 +22,12 @@ class LoginUser
     {
         return !empty($this->Username) && !empty($this->Password);
     }
+    // public function is_password_valid()
+    // {
+    //     return !empty($this->Password);
+    // }
+    //     public function is_user_valid()
+    // {
+    //     return !empty($this->Username) ;
+    // }
 }

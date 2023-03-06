@@ -8,17 +8,12 @@ $login_page = "/demo/src/pages/login.php";
 $welcome_page = "/demo/src/pages/welcome.php";
 
 
-if(!isset($_POST['username']) || !isset($_POST['password'])) {
-    header ("Location: $login_page?error=Username and Password are required");
-    exit();
-}
-
 $user = new LoginUser ($_POST['username'], $_POST['password']);
 
 if (!$user-> is_user_valid()) {
-    header ("Location: $login_page?error=Password is required");
+    header ("Location: $login_page?error=Username and Password are required");
     exit();
-}
+ }
 
 $db_user = db_login($user);
 
