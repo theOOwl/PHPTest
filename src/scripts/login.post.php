@@ -17,7 +17,7 @@ if (!$user-> is_user_valid()) {
 
 $db_user = db_login($user);
 
-if ($db_user == null) {
+if ($db_user == false) {
     header("Location: $login_page?error=Incorrect User Name or Password");
     exit();
 }
